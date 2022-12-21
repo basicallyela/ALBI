@@ -16,7 +16,7 @@ public:
     void looks()
 {
     system("CLS");
-    system("COLOR F0");
+    system("COLOR 0E");
     cout<<endl;
     cout<<R"(
                 AAA                    LLLLLLLLLLL                  BBBBBBBBBBBBBBBBBB         IIIIIIIIII
@@ -43,6 +43,7 @@ public:
 void artistpage()
 {
     system("CLS");
+    system("COLOR E0");
     cout<<R"(
  ________  ________  _________  ___  ________  _________        ________  ________  ________  _______
 |\   __  \|\   __  \|\___   ___\\  \|\   ____\|\___   ___\     |\   __  \|\   __  \|\   ____\|\  ___ \
@@ -58,6 +59,7 @@ void artistpage()
 void convertor()
 {
     system("CLS");
+    system("COLOR E0");
     cout<<R"( ________  ________  ________   ___      ___ _______   ________  _________  ________  ________
 |\   ____\|\   __  \|\   ___  \|\  \    /  /|\  ___ \ |\   __  \|\___   ___\\   __  \|\   __  \
 \ \  \___|\ \  \|\  \ \  \\ \  \ \  \  /  / | \   __/|\ \  \|\  \|___ \  \_\ \  \|\  \ \  \|\  \
@@ -72,6 +74,7 @@ void convertor()
 void btslogocaller()
 {
     system("CLS");
+    system("COLOR E0");
 cout<<R"(|\   __  \|\___   ___\\   ____\
 \ \  \|\ /\|___ \  \_\ \  \___|_
  \ \   __  \   \ \  \ \ \_____  \
@@ -85,6 +88,7 @@ cout<<R"(|\   __  \|\___   ___\\   ____\
 void bplogocaller()
 {
     system("CLS");
+    system("COLOR E0");
         cout<< R"( ________  ___       ________  ________  ___  __    ________  ___  ________   ___  __
 |\   __  \|\  \     |\   __  \|\   ____\|\  \|\  \ |\   __  \|\  \|\   ___  \|\  \|\  \
 \ \  \|\ /\ \  \    \ \  \|\  \ \  \___|\ \  \/  /|\ \  \|\  \ \  \ \  \\ \  \ \  \/  /|_
@@ -99,6 +103,7 @@ void bplogocaller()
 void skzlogocaller()
 {
     system("CLS");
+    system("COLOR E0");
     cout<< R"( ________  _________  ________  ________      ___    ___      ___  __    ___  ________  ________
 |\   ____\|\___   ___\\   __  \|\   __  \    |\  \  /  /|    |\  \|\  \ |\  \|\   ___ \|\   ____\
 \ \  \___|\|___ \  \_\ \  \|\  \ \  \|\  \   \ \  \/  / /    \ \  \/  /|\ \  \ \  \_|\ \ \  \___|_
@@ -115,6 +120,7 @@ void skzlogocaller()
 void nctlogocaller()
 {
     system("CLS");
+    system("COLOR E0");
         cout << R"( ________   ________ _________
 |\   ___  \|\   ____\\___   ___\
 \ \  \\ \  \ \  \___\|___ \  \_|
@@ -355,26 +361,24 @@ class Konvertor
 private:
     logos logo;
     float konvertovani_broj, broj, dolar = 1.61, kuna = 1.96;
-    string apom = "Y", odg1, pombroj;
-    int brjc, brojac1, brojac2, brojac3=0;
-    char a, broj1;
+    string a = "Y", odg1, pombroj;
+
+    char broj1;
     char odg = 'Y' ;
         public:
     //this method stands alone and is the second part of the albi programme
     //it is the convertor, all by itself
         void samokonvertor(){
         while (odg == 'Y'){
-        system("CLS");
-        system("COLOR B0");
+        opet: system("CLS");
         unos: logo.convertor();
         cout << endl;
         cout << "Which type of conversion do you want?\n 1) $ to KM\n 2) EURO to KM\n 3) KM to $\n 4) KM to EURO\nEnter number: ";
-        cin >> apom;
-        brjc = apom.length();
-        if (brjc == 1){
-                a = apom[0];
-    if (isdigit(a)){
-        if (a == '1'){
+        cin >> a;
+        if(a!="1" && a!="2" && a!="3" && a!="4"){
+            goto opet;
+        }
+        if (a[0] == '1'){
             cout << "Which price do you want to convert (ex. 23.5): ";
             cin >> broj;
             if (broj == 504004){
@@ -401,18 +405,10 @@ private:
             cout << "Converted price is: " << konvertovani_broj << endl;
             jedan: cout << "\nDo you want to convert another price? (type Y for yes and N for no): ";
             cin >> odg1;
-            brojac1 = odg1.length();
-            if (brojac1 == 1){
-            if(isalpha(odg1[0])){
-            odg = toupper(odg1[0]);
-            if (odg != 'N' && odg != 'Y'){
-            cout << "Something went wrong, please try again." << endl;
-            goto jedan;}}
-            else {cout << "Something went wrong, please try again." << endl; goto jedan;}
+            if (odg1[0] != 'N' && odg1[0] != 'Y' && odg1[0]!='y' && odg1[0]!='n'){
+            goto jedan;}
         }
-        else {cout << "Something went wrong, please try again." << endl; goto jedan;}
-        }
-        else if (a == '2'){
+        else if (a[0] == '2'){
             cout << "Which price do you want to convert (ex. 23.5): ";
             cin >> broj;
             konvertovani_broj = broj*kuna;
@@ -420,17 +416,10 @@ private:
             cout << "Converted price is: "<<konvertovani_broj<<endl;
             dva: cout << "\nDo you want to convert another price? (type Y for yes and N for no): ";
             cin >> odg1;
-            brojac1 = odg1.length();
-            if (brojac1 == 1){
-            if(isalpha(odg1[0])){
-            odg = toupper(odg1[0]);
-            if (odg != 'N' && odg != 'Y'){
-            cout << "Something went wrong, please try again." << endl;
-            goto dva;}}
-            else {cout << "Something went wrong, please try again." << endl;goto dva;}}
-            else {cout << "Something went wrong, please try again." << endl;goto dva;}
+            if (odg1[0] != 'N' && odg1[0] != 'Y' && odg1[0]!='y' && odg1[0]!='n'){
+            goto dva;}
         }
-        else if (a == '3'){
+        else if (a[0] == '3'){
             cout << "Which price do you want to convert (ex. 23.5): ";
             cin >> broj;
             konvertovani_broj = broj/dolar;
@@ -438,17 +427,10 @@ private:
             cout << "Converted price is: " << konvertovani_broj << endl;
             tri: cout << "\nDo you want to convert another price? (type Y for yes and N for no): ";
             cin >> odg1;
-            brojac1 = odg1.length();
-            if (brojac1 == 1){
-            if(isalpha(odg1[0])){
-            odg = toupper(odg1[0]);
-            if (odg != 'N' && odg != 'Y'){
-            cout << "Something went wrong, please try again." << endl;
-            goto dva;}}
-            else {cout << "Something went wrong, please try again." << endl;goto tri;}}
-            else {cout << "Something went wrong, please try again." << endl;goto tri;}
+            if (odg1[0] != 'N' && odg1[0] != 'Y' && odg1[0]!='y' && odg1[0]!='n'){
+            goto tri;}
         }
-        else if (a == '4'){
+        else if (a[0] == '4'){
             cout << "Which price do you want to convert (ex. 23.5): ";
             cin >> broj;
             konvertovani_broj = broj/kuna;
@@ -456,23 +438,10 @@ private:
             cout << "Converted price is: " << konvertovani_broj << endl;
             cetiri: cout << "\nDo you want to convert another price? (type Y for yes and N for no): ";
             cin >> odg1;
-            brojac1 = odg1.length();
-            if (brojac1 == 1){
-            if(isalpha(odg1[0])){
-            odg = toupper(odg1[0]);
-            if (odg != 'N' && odg != 'Y'){
-            cout << "Something went wrong, please try again." << endl;
-            goto dva;}}
-            else {cout << "Something went wrong, please try again." << endl;goto cetiri;}}
-            else {cout << "Something went wrong, please try again." << endl;goto cetiri;}
+            if (odg1[0] != 'N' && odg1[0] != 'Y' && odg1[0]!='y' && odg1[0]!='n'){
+            goto cetiri;}
         }
         else{system("CLS");
-    cout << "Something went wrong, please try again." << endl;
-    cout << endl;
-    goto unos;}}}
-    else {system("CLS");
-    cout << "Something went wrong, please try again." << endl;
-    cout << endl;
     goto unos;}
 
 
@@ -494,7 +463,6 @@ private:
 //this function also calls function brojacvo1
 void albi()
 {
-    system("COLOR B0");
 
     Konvertor cijenalast;
     std::array <int, 18> arr;
@@ -611,6 +579,7 @@ void albi()
 //main function, where all functions and classes will be called
 int main()
 {
+    system("COLOR E0");
     string pu, pomodg1, pomodg;
     char odg1, odg;
     int brojac1, brojac;
