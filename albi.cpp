@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-
+ 
 using namespace std;
 
 //arrays that will be used in the code, every array contains 3 numbers, numbers on position 0 are prices of albums in one shop,
